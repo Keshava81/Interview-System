@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Interview - Combined</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: "Segoe UI", Arial, sans-serif;
+      }
+      body {
+        margin: 0;
+        background-color: #fff;
+        height: 100vh;
+      }
+
+      /* ---------- LOGIN PAGE ---------- */
+      #loginPage {
+        display: flex;
+        height: 100vh;
+      }
+
+      .left-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 60px;
+        background-color: #ffffff;
+      }
+
+      .logo {
+        font-size: 2.5em;
+        font-weight: bold;
+        margin-bottom: 30px;
+      }
+
+      .logo span {
+        color: #ff8200;
+      }
+
+      .features h2 {
+        margin-bottom: 10px;
+      }
+
+      .features ul {
+        list-style-type: none;
+        padding: 0;
+        line-height: 1.8em;
+      }
+
+      .features li::before {
+        content: "✓ ";
+        color: #ff8200;
+      }
+
+      .right-section {
+        flex: 1;
+        background-color: #ff8200;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .login-box {
+        background: white;
+        border-radius: 10px;
+        padding: 40px;
+        width: 360px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+      }
+
+      .login-box h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      input {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1em;
+      }
+
+      button {
+        width: 100%;
+        background-color: #ff8200;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 1.1em;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #e97300;
+      }
+
+      .small-text {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 0.9em;
+      }
+
+      .small-text a {
+        color: #ff8200;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      /* ---------- INTERVIEW PAGE ---------- */
+      #interviewPage {
+        display: none;
+        text-align: center;
+      }
+
+      #interviewPage header {
+        background: #ff8200;
+        color: white;
+        padding: 15px 0;
+        font-size: 1.4em;
+      }
+
+      #interviewPage video {
+        width: 480px;
+        height: 360px;
+        border: 2px solid #ccc;
+        margin-top: 20px;
+      }
+
+      #feedbackBox {
+        margin: 20px auto;
+        width: 480px;
+        text-align: left;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 10px;
+        height: 120px;
+        overflow-y: auto;
+        background: #fafafa;
+      }
+
+      #interviewPage button {
+        padding: 10px 20px;
+        margin: 10px;
+        background-color: #ff8200;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      #interviewPage button:disabled {
+        opacity: 0.6;
+      }
+
+      /* ---------- FEEDBACK PAGE ---------- */
+      #feedbackPage {
+        display: none;
+        font-family: "Segoe UI", sans-serif;
+        background-color: #f8f9fa;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .card {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        padding: 30px;
+        width: 400px;
+        text-align: center;
+        animation: fadeIn 0.6s ease-in-out;
+      }
+
+      h1 {
+        color: #ff8200;
+        margin-bottom: 20px;
+      }
+
+      .bar-container {
+        width: 100%;
+        background-color: #e0e0e0;
+        border-radius: 10px;
+        overflow: hidden;
+        margin: 15px 0;
+      }
+
+      .bar {
+        height: 20px;
+        width: 0;
+        background-color: #ff8200;
+        border-radius: 10px;
+        transition: width 1.5s ease-in-out;
+      }
+
+      .feedback-text {
+        font-size: 1.1em;
+        margin-top: 20px;
+        color: #333;
+      }
+
+      .tips {
+        margin-top: 20px;
+        background-color: #fff6ec;
+        border-left: 5px solid #ff8200;
+        padding: 10px;
+        border-radius: 5px;
+        text-align: left;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- LOGIN PAGE -->
+    <div id="loginPage">
+      <div class="left-section">
+        <div class="logo">AI<span>Interview</span></div>
+        <div class="features">
+          <h2>Struggling to Prepare for Interviews?</h2>
+          <p>Boost your confidence with AI-based practice tools.</p>
+          <ul>
+            <li>AI Mock Interviews – Get instant performance feedback</li>
+            <li>Resume Analyzer – Evaluate your CV in seconds</li>
+            <li>Interview Question Generator – Be prepared for anything</li>
+            <li>Multilingual Support – English, Hindi, Tamil, Telugu</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="right-section">
+        <div class="login-box">
+          <h2>Login to Continue</h2>
+          <input type="text" id="username" placeholder="Username" />
+          <input type="password" id="password" placeholder="Password" />
+          <button onclick="login()">Login</button>
+          <div class="small-text">
+            Don’t have an account? <a href="#">Sign Up</a><br />
+            Are you an employer? <a href="#">Click here</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INTERVIEW PAGE -->
+    <div id="interviewPage">
+      <header>AI Interview - Live Feedback Simulation</header>
+      <video id="preview" autoplay muted></video><br />
+      <button id="startBtn">Start Interview</button>
+      <button id="stopBtn" disabled>Stop</button>
+
+      <div id="feedbackBox">
+        <strong>Live Feedback:</strong>
+        <ul id="feedbackList"></ul>
+      </div>
+    </div>
+
+    <!-- FEEDBACK PAGE -->
+    <div id="feedbackPage">
+      <div class="card">
+        <h1>Your AI Feedback</h1>
+        <div class="bar-container">
+          <div id="confidenceBar" class="bar"></div>
+        </div>
+        <p id="confidenceText"></p>
+        <p id="feedback" class="feedback-text">Analyzing your performance...</p>
+
+        <div class="tips" id="tipsBox">
+          <strong>AI Tips:</strong>
+          <ul id="tipsList"></ul>
+        </div>
+
+        <button onclick="goHome()">Go to Home</button>
+      </div>
+    </div>
+
+    <script>
+      // ---------- LOGIN ----------
+      async function login() {
+        // Simulated backend call
+        const res = { json: async () => ({ success: true }) };
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById("loginPage").style.display = "none";
+          document.getElementById("interviewPage").style.display = "block";
+        } else {
+          alert("Login failed. Try again.");
+        }
+      }
+
+      // ---------- INTERVIEW ----------
+      const feedbackMessages = [
+        "Good start — maintain steady eye contact.",
+        "Your tone is confident. Keep it up!",
+        "Try to add a short example to support your point.",
+        "Pause slightly between sentences for clarity.",
+        "Great explanation — well-structured response!",
+        "You’re using clear language — excellent communication.",
+        "Remember to smile occasionally; it improves delivery.",
+        "Nice conclusion — you summarized the key idea well.",
+      ];
+
+      let stream, intervalId;
+      const feedbackList = document.getElementById("feedbackList");
+
+      async function startInterview() {
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+          audio: true,
+        });
+        document.getElementById("preview").srcObject = stream;
+        document.getElementById("startBtn").disabled = true;
+        document.getElementById("stopBtn").disabled = false;
+
+        intervalId = setInterval(() => {
+          const msg =
+            feedbackMessages[
+              Math.floor(Math.random() * feedbackMessages.length)
+            ];
+          const li = document.createElement("li");
+          li.textContent = msg;
+          feedbackList.appendChild(li);
+          feedbackList.scrollTop = feedbackList.scrollHeight;
+        }, 4000);
+      }
+
+      function stopInterview() {
+        clearInterval(intervalId);
+        stream.getTracks().forEach((t) => t.stop());
+        document.getElementById("startBtn").disabled = false;
+        document.getElementById("stopBtn").disabled = true;
+        setTimeout(() => {
+          document.getElementById("interviewPage").style.display = "none";
+          document.getElementById("feedbackPage").style.display = "flex";
+          getFeedback();
+        }, 1500);
+      }
+
+      document.getElementById("startBtn").onclick = startInterview;
+      document.getElementById("stopBtn").onclick = stopInterview;
+
+      // ---------- FEEDBACK ----------
+      async function getFeedback() {
+        const data = {
+          feedback: "Excellent performance! Your clarity was impressive.",
+        };
+
+        const feedback = data.feedback || "You did well!";
+        document.getElementById("feedback").textContent = feedback;
+
+        let confidence = 0;
+        if (feedback.includes("short")) confidence = 45;
+        else if (feedback.includes("clarity")) confidence = 70;
+        else if (
+          feedback.includes("Excellent") ||
+          feedback.includes("impressive")
+        )
+          confidence = 95;
+        else confidence = 60 + Math.floor(Math.random() * 20);
+
+        const bar = document.getElementById("confidenceBar");
+        bar.style.width = confidence + "%";
+        document.getElementById("confidenceText").textContent =
+          "Confidence Score: " + confidence + "%";
+
+        const tips = [];
+        if (confidence < 50) {
+          tips.push("Try to give longer answers to show deeper understanding.");
+          tips.push("Maintain steady eye contact with the camera.");
+        } else if (confidence < 80) {
+          tips.push(
+            "Your tone is clear! Add more examples to strengthen your points."
+          );
+          tips.push("Keep a calm pace and structure your answers better.");
+        } else {
+          tips.push(
+            "Great confidence! Keep practicing for even smoother delivery."
+          );
+          tips.push(
+            "Try to refine small pauses and transitions between ideas."
+          );
+        }
+
+        const tipsList = document.getElementById("tipsList");
+        tipsList.innerHTML = "";
+        tips.forEach((tip) => {
+          const li = document.createElement("li");
+          li.textContent = tip;
+          tipsList.appendChild(li);
+        });
+      }
+
+      function goHome() {
+        document.getElementById("feedbackPage").style.display = "none";
+        document.getElementById("loginPage").style.display = "flex";
+      }
+    </script>
+  </body>
+</html>
